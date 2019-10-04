@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtFormTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="FORM INSPEKSI BULANAN" />
+
+    <ImageView
+        android:id="@+id/imgChildTree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_section"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtFormTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSectionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/imgChildTree"
+        app:layout_constraintTop_toBottomOf="@id/txtFormTitle"
+        tools:text="FORM GI GEYEM" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="@id/txtSectionLabel"
+        app:layout_constraintRight_toRightOf="@id/txtSectionLabel"
+        app:layout_constraintTop_toBottomOf="@id/txtSectionLabel" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_form"
+        android:name="com.syanko.simonis.ui.form.FormFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/btnSave"
+        app:layout_constraintTop_toBottomOf="@id/txtSectionLabel"
+        tools:context=".ui.form.content.FormContentFragment"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_content_form" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/list_selector_background"
+        android:drawableEnd="@drawable/ic_save"
+        android:text="@string/save"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list_form" />
+</androidx.constraintlayout.widget.ConstraintLayout>
