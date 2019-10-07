@@ -8,5 +8,5 @@ interface FormRepository {
     suspend fun getFormByInspection(id: Int): List<Form>
     suspend fun saveFormSession(form: FormResultEntity): Long
     suspend fun deleteFormSession(formSessionId: Long): Int
-    suspend fun saveFormValue(value: List<FormValueEntity>): Long
+//    suspend fun saveFormValue(value: List<FormValueEntity>): Long
 }

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -19,11 +21,14 @@ import com.syanko.simonis.ui.form.section.FormSectionFragment
 import com.syanko.simonis.ui.login.LoginActivity
 import com.syanko.simonis.ui.main.equipment.EquipmentFragment
 import com.syanko.simonis.ui.main.inspection.InspectionFragment
+import com.syanko.simonis.ui.webform.WebFormActivity
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.activity_fragment.*
 import kotlinx.android.synthetic.main.content_fragment.*
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity(), MenuItemClickListener, FormItemSelectedListerner {
+class MainActivity : DaggerAppCompatActivity(), MenuItemClickListener, FormItemSelectedListerner,
+    PageLoaderListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -46,7 +51,8 @@ class MainActivity : DaggerAppCompatActivity(), MenuItemClickListener, FormItemS
                 runInspectionFragment(item.id)
             }
             is MainViewObject.InspectionViewObject -> {
-                runFormFragment(item.id)
+                openWebFormActivity(item.id)
+//                runFormFragment(item.id)
             }
             is MainViewObject.SectionViewObject -> {
                 if (item.children.isNotEmpty()) {
@@ -99,6 +105,14 @@ class MainActivity : DaggerAppCompatActivity(), MenuItemClickListener, FormItemS
             }
         })
         viewModel.initiateActiveUser()
+    }
+
+    override fun onPageLoading() {
+        loader.visibility = VISIBLE
+    }
+
+    override fun onPageLoaded() {
+        loader.visibility = GONE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -158,6 +172,11 @@ class MainActivity : DaggerAppCompatActivity(), MenuItemClickListener, FormItemS
     private fun runFormFragment(id: Int) {
         val fragment = FormFragment.createFragment(id)
         replaceFragment(fragment, true)
+    }
+
+    private fun openWebFormActivity(inspectionId: Int) {
+        val intent = WebFormActivity.openWebForm(this, inspectionId)
+        startActivity(intent)
     }
 
     private fun runFormSectionFragment(
@@ -244,4 +263,9 @@ interface MenuItemClickListener {
 
 interface FormItemSelectedListerner {
     fun onFormSelected(item: MainViewObject.FormViewObject)
+}
+
+interface PageLoaderListener {
+    fun onPageLoading()
+    fun onPageLoaded()
 }

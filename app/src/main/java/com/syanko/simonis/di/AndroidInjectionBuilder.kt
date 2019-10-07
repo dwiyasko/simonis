@@ -7,6 +7,7 @@ import com.syanko.simonis.ui.main.MainActivity
 import com.syanko.simonis.ui.main.MenuFragment
 import com.syanko.simonis.ui.main.equipment.EquipmentFragment
 import com.syanko.simonis.ui.main.inspection.InspectionFragment
+import com.syanko.simonis.ui.webform.WebFormActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -33,4 +34,7 @@ abstract class AndroidInjectionBuilder {
 
     @ContributesAndroidInjector
     abstract fun bindFormContentFragment(): FormContentFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindWebFormActivity(): WebFormActivity
 }

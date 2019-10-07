@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.syanko.simonis.R
 import com.syanko.simonis.ui.main.MenuItemClickListener
+import com.syanko.simonis.ui.main.PageLoaderListener
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -22,6 +23,7 @@ class InspectionFragment : DaggerFragment() {
     lateinit var viewModel: InspectionViewModel
 
     private var listener: MenuItemClickListener? = null
+    private var loaderListener: PageLoaderListener? = null
     private lateinit var adapter: InspectionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,19 +53,18 @@ class InspectionFragment : DaggerFragment() {
 
         viewModel.inspection.observe(this, Observer {
             adapter.submitList(it)
+            loaderListener?.onPageLoaded()
         })
 
         val equipmentId = arguments?.getInt(EQUIPMENT_ID_EXTRA, -1) ?: -1
+        loaderListener?.onPageLoading()
         viewModel.loadInspectionByEquipment(equipmentId)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is MenuItemClickListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
+        listener = context as MenuItemClickListener
+        loaderListener = context as PageLoaderListener
     }
 
     override fun onDetach() {

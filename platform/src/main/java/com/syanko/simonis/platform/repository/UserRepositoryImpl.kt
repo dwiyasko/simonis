@@ -30,6 +30,10 @@ class UserRepositoryImpl(
     override suspend fun deleteCurrentUserIfAny(): Int {
         return authManager.deleteUser()
     }
+
+    override suspend fun getToken(): String {
+        return authManager.getToken()
+    }
 }
 
 

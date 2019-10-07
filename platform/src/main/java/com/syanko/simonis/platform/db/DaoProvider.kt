@@ -7,7 +7,7 @@ import com.syanko.simonis.platform.db.dao.ValueDao
 interface DaoProvider {
     fun profileDao(): ProfileDao
     fun formDao(): FormDao
-    fun formValueDao(): ValueDao
+//    fun formValueDao(): ValueDao
 }
 
 class DaoProviderImpl(private val database: SimonisDatabase) : DaoProvider {
@@ -19,8 +19,8 @@ class DaoProviderImpl(private val database: SimonisDatabase) : DaoProvider {
         return database.formDao()
     }
 
-    override fun formValueDao(): ValueDao {
-        return database.formValueDao()
-    }
+//    override fun formValueDao(): ValueDao {
+//        return database.formValueDao()
+//    }
 
 }

@@ -49,9 +49,9 @@ class FormContentFragment : DaggerFragment() {
 
         btnSave.setOnClickListener {
             val formIsNotEmpty = checkIsFormNotEmpty()
-            if (formIsNotEmpty) {
-                viewModel.saveFormContent(contentAdapter.values)
-            }
+//            if (formIsNotEmpty) {
+////                viewModel.saveFormContent(contentAdapter.values)
+//            }
         }
     }
 

@@ -9,7 +9,7 @@ interface FormInterActor {
     suspend fun getFormByInspection(id: Int): List<Form>
     suspend fun saveFormSession(form: FormResultEntity): Long
     suspend fun deleteFormSession(id: Long): Int
-    suspend fun saveFormValue(formValues: List<FormValueEntity>): Long
+//    suspend fun saveFormValue(formValues: List<FormValueEntity>): Long
 }
 
 class FormInterActorImpl(private val formRepository: FormRepository) : FormInterActor {
@@ -21,9 +21,9 @@ class FormInterActorImpl(private val formRepository: FormRepository) : FormInter
         return formRepository.saveFormSession(form)
     }
 
-    override suspend fun saveFormValue(formValues: List<FormValueEntity>): Long {
-        return formRepository.saveFormValue(formValues)
-    }
+//    override suspend fun saveFormValue(formValues: List<FormValueEntity>): Long {
+//        return formRepository.saveFormValue(formValues)
+//    }
 
     override suspend fun deleteFormSession(id: Long): Int {
         return formRepository.deleteFormSession(id)

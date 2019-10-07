@@ -11,4 +11,5 @@ interface UserRepository {
 
     suspend fun saveLoggedInUser(user: User): Long
     suspend fun deleteCurrentUserIfAny(): Int
+    suspend fun getToken(): String
 }

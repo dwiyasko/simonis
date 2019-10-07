@@ -13,6 +13,7 @@ interface FormDao {
     @Query("DELETE FROM form_result WHERE id=:id")
     suspend fun deleteFormSession(id: Long): Int
 
-    @Query("SELECT * FROM form_result INNER JOIN form_value on formResultId=id WHERE id = :id")
-    suspend fun getFormResultByForm(id: Int): FormResult
+    //TODO Lanjutno iki cak!!!
+//    @Query("SELECT * FROM form_result INNER JOIN form_value on formResultId=id WHERE id = :id")
+//    suspend fun getFormResultByForm(id: Int): FormResult
 }

@@ -7,6 +7,7 @@ interface UserInterActor {
     suspend fun signIn(username: String, password: String): User
     suspend fun isLoggedIn(): Boolean
     suspend fun getActiveUser(): User
+    suspend fun getToken(): String
     suspend fun logout(): Int
 }
 
@@ -25,6 +26,10 @@ class UserInterActorImpl(private val userRepository: UserRepository) : UserInter
 
     override suspend fun getActiveUser(): User {
         return userRepository.getActiveUser()
+    }
+
+    override suspend fun getToken(): String {
+        return userRepository.getToken()
     }
 
     override suspend fun logout(): Int {

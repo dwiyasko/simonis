@@ -3,12 +3,9 @@ package com.syanko.simonis.ui.form.content
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.syanko.simonis.domain.entity.FormValueEntity
 import com.syanko.simonis.domain.interactor.FormInterActor
 import com.syanko.simonis.ui.main.MainViewObject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FormContentViewModel @Inject constructor(
@@ -29,9 +26,9 @@ class FormContentViewModel @Inject constructor(
             )
         }
 
-        viewModelScope.launch(context = Dispatchers.IO) {
-            formInterActor.saveFormValue(valueEntities)
-        }
+//        viewModelScope.launch(context = Dispatchers.IO) {
+//            formInterActor.saveFormValue(valueEntities)
+//        }
     }
 }
 

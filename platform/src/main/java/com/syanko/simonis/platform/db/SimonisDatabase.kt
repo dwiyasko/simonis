@@ -22,7 +22,7 @@ abstract class SimonisDatabase : RoomDatabase() {
 
     abstract fun profileDao(): ProfileDao
     abstract fun formDao(): FormDao
-    abstract fun formValueDao(): ValueDao
+//    abstract fun formValueDao(): ValueDao
 
     companion object {
         private val LOCK = Any()

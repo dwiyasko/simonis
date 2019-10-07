@@ -8,6 +8,7 @@ import com.syanko.simonis.ui.login.LoginViewModel
 import com.syanko.simonis.ui.main.MainViewModel
 import com.syanko.simonis.ui.main.equipment.EquipmentViewModel
 import com.syanko.simonis.ui.main.inspection.InspectionViewModel
+import com.syanko.simonis.ui.webform.WebFormViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -68,4 +69,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(FormViewModel::class)
     internal abstract fun formViewModel(viewModel: FormViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WebFormViewModel::class)
+    internal abstract fun webFormViewModel(viewModel: WebFormViewModel): ViewModel
 }

@@ -24,13 +24,13 @@ class FormRepositoryImpl(private val formApi: FormApi, private val daoProvider: 
         return daoProvider.formDao().deleteFormSession(formSessionId)
     }
 
-    override suspend fun saveFormValue(value: List<FormValueEntity>): Long {
-        val formValue = value.map {
-            it.mapToFormValue()
-        }
-
-        return daoProvider.formValueDao().saveFormValue(formValue)
-    }
+//    override suspend fun saveFormValue(value: List<FormValueEntity>): Long {
+//        val formValue = value.map {
+//            it.mapToFormValue()
+//        }
+//
+//        return daoProvider.formValueDao().saveFormValue(formValue)
+//    }
 
     //region private method
     private fun FormResultEntity.mapToFormResult(): FormResult {
