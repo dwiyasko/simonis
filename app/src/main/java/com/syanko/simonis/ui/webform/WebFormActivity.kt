@@ -92,18 +92,18 @@ class WebFormActivity : DaggerAppCompatActivity() {
                 return true
             }
 
-            private fun handleUrlRedirect(url: String) {
-                Log.wtf("url", url)
-                if (url.contains("formsuccess")) {
-                    showDialogSuccess()
-                }
-            }
-
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 url?.let {
                     handleUrlRedirect(url)
                 }
                 return true
+            }
+
+            private fun handleUrlRedirect(url: String) {
+                Log.wtf("url", url)
+                if (url.contains("formsuccess")) {
+                    showDialogSuccess()
+                }
             }
         }
 
